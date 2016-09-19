@@ -1,0 +1,16 @@
+export PATH=$HOME/bin:$HOME/opt/bin:$PATH:./node_modules/.bin
+
+export NVM_DIR="~/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+[ -f `pwd`'/.nvmrc' ] && nvm use
+
+alias flush="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;"
+alias j="jekyll serve --watch"
+alias npmc="npm-check --no-emoji"
+alias npmr="rimraf node_modules && rimraf npm-shrinkwrap.json && npm i"
+alias npms="npmr && npm run verify && npm shrinkwrap --dev"
+alias server="python -m SimpleHTTPServer 8000"
+alias showallon="defaults write com.apple.finder AppleShowAllFiles YES"
+alias showalloff="defaults write com.apple.finder AppleShowAllFiles NO"
+alias usebash="chsh -s /bin/bash"
+alias usezsh="chsh -s /bin/zsh"
