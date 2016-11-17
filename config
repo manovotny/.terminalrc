@@ -2,8 +2,16 @@ export PATH=$HOME/bin:$HOME/opt/bin:$PATH:./node_modules/.bin
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-[ -f `pwd`'/.nvmrc' ] && nvm use
+function automaticNvmUse() {
+    if [ -f `pwd`'/.nvmrc' ]; then nvm use; fi
+}
+function checkForNvmOnCd() {
+  cd $1
+  automaticNvmUse
+}
+automaticNvmUse
 
+alias cd=checkForNvmOnCd
 alias flush="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;"
 alias j="jekyll serve --watch"
 alias npmc="npm-check --no-emoji"
