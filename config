@@ -2,14 +2,14 @@ export PATH=$HOME/bin:$HOME/opt/bin:./node_modules/.bin:$HOME/Developer/wpcs/ven
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-function automaticNvmUse() {
-    if [ -f `pwd`'/.nvmrc' ]; then nvm use; fi
+function automaticNvm() {
+    if [ -f `pwd`'/.nvmrc' ]; then nvm install; fi
 }
 function checkForNvmOnCd() {
   cd $1
-  automaticNvmUse
+  automaticNvm
 }
-automaticNvmUse
+automaticNvm
 
 alias cd=checkForNvmOnCd
 alias flush="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;"
