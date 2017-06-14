@@ -1,4 +1,4 @@
-export PATH=$HOME/bin:$HOME/opt/bin:./node_modules/.bin:$HOME/Developer/wpcs/vendor/bin:$PATH
+export PATH=$HOME/bin:$HOME/opt/bin:./node_modules/.bin:$HOME/Developer/wpcs/vendor/bin:$HOME/.yarn/bin:$PATH
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
@@ -10,6 +10,18 @@ function checkForNvmOnCd() {
   automaticNvm
 }
 automaticNvm
+
+function yarnInstall() {
+    echo "Uninstalling yarn..."
+    rm -f /usr/local/bin/yarnpkg
+    rm -f /usr/local/bin/yarn
+
+    echo "Removing yarn cache..."
+    rm -rf ${HOME}/.yarn
+
+    echo "Installing yarn..."
+    curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version $1
+}
 
 alias cd=checkForNvmOnCd
 alias flush="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;"
@@ -24,3 +36,4 @@ alias showallon="defaults write com.apple.finder AppleShowAllFiles YES"
 alias showalloff="defaults write com.apple.finder AppleShowAllFiles NO"
 alias usebash="chsh -s /bin/bash"
 alias usezsh="chsh -s /bin/zsh"
+alias yarni=yarnInstall
