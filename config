@@ -37,3 +37,4 @@ alias showalloff="defaults write com.apple.finder AppleShowAllFiles NO"
 alias usebash="chsh -s /bin/bash"
 alias usezsh="chsh -s /bin/zsh"
 alias yarni=yarnInstall
+alias yarnr="rm -rf node_modules && yarn"
