@@ -40,6 +40,7 @@ automaticNvm
 
 alias cd=checkForNvmOnCd
 alias flush="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;"
+alias github-labels="labels -c $HOME/.terminalrc/github-labels.json -f $1 -t $GITHUB_LABELS_TOKEN"
 alias j="jekyll serve --watch"
 alias killport=killport
 alias ls="ls -A"
