@@ -7,14 +7,17 @@ export PATH=$PATH:/Applications/Genymotion.app/Contents/MacOS/tools
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
 function automaticNvm() {
-    if [ -f `pwd`'/.nvmrc' ]; then nvm use; fi
+    if [ -f .nvmrc ]; then
+        nvm use;
+    fi
 }
+
 function checkForNvmOnCd() {
   cd $1
   automaticNvm
 }
-automaticNvm
 
 function yarnInstall() {
     echo "Uninstalling yarn..."
@@ -27,6 +30,8 @@ function yarnInstall() {
     echo "Installing yarn..."
     curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version $1
 }
+
+automaticNvm
 
 alias cd=checkForNvmOnCd
 alias flush="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;"
