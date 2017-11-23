@@ -19,6 +19,11 @@ function checkForNvmOnCd() {
   automaticNvm
 }
 
+function killport() {
+    port=$(lsof -n -i4TCP:$1 | grep LISTEN | awk '{ print $2 }')
+    kill -9 $port
+}
+
 function yarnInstall() {
     echo "Uninstalling yarn..."
     rm -f /usr/local/bin/yarnpkg
@@ -36,6 +41,7 @@ automaticNvm
 alias cd=checkForNvmOnCd
 alias flush="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;"
 alias j="jekyll serve --watch"
+alias killport=killport
 alias ls="ls -A"
 alias mkdir="mkdir -p"
 alias npmc="npm-check --no-emoji"
