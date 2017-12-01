@@ -1,7 +1,6 @@
 export PATH=$PATH:./node_modules/.bin
 export PATH=$PATH:$HOME/.yarn/bin
 export PATH=$PATH:$HOME/bin
-export PATH=$PATH:$HOME/Developer/wpcs/vendor/bin
 export PATH=$PATH:$HOME/opt/bin
 export PATH=$PATH:/Applications/Genymotion.app/Contents/MacOS/tools
 
