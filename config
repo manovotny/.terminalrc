@@ -17,8 +17,8 @@ function automaticNvm() {
 }
 
 function checkForNvmOnCd() {
-  cd $1
-  automaticNvm
+    cd $1
+    automaticNvm
 }
 
 function gitUpstream() {
@@ -31,15 +31,17 @@ function gitUpstream() {
 }
 
 function gitPullRequest() {
-  local remote=${2:-origin}
-  git fetch ${remote} +refs/pull/$1/head:refs/remotes/${remote}/pr/$1
-  git pull --no-rebase --squash ${remote} pull/$1/head
+    local remote=${2:-origin}
+    git fetch ${remote} +refs/pull/$1/head:refs/remotes/${remote}/pr/$1
+    git pull --no-rebase --squash ${remote} pull/$1/head
 }
 
 function gitPullRequestUpstream() {
-  local remote=${2:-upstream}
-  git fetch ${remote} +refs/pull/$1/head:refs/remotes/${remote}/pr/$1
-  git pull --no-rebase --squash ${remote} pull/$1/head
+    git reset --hard
+    gitUpstream
+    local remote=${2:-upstream}
+    git fetch ${remote} +refs/pull/$1/head:refs/remotes/${remote}/pr/$1
+    git pull --no-rebase --squash ${remote} pull/$1/head
 }
 
 function killport() {
