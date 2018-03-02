@@ -82,6 +82,7 @@ alias npms="rm -rf npm-shrinkwrap.json && npmr && npm test && npm shrinkwrap --d
 alias server="python -m SimpleHTTPServer 8000"
 alias showallon="defaults write com.apple.finder AppleShowAllFiles YES"
 alias showalloff="defaults write com.apple.finder AppleShowAllFiles NO"
+alias sourcerc="source ~/.bash_profile && source ~/.zshrc"
 alias usebash="chsh -s /bin/bash"
 alias usezsh="chsh -s /bin/zsh"
 alias yarni=yarnInstall
