@@ -10,15 +10,15 @@ export PATH=$PATH:/Applications/Genymotion.app/Contents/MacOS/tools
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
-function automaticNvm() {
+function cdEnhanced() {
+    cd $1
+    doNvm
+}
+
+function doNvm() {
     if [ -f .nvmrc ]; then
         nvm use;
     fi
-}
-
-function checkForNvmOnCd() {
-    cd $1
-    automaticNvm
 }
 
 function doPrettier() {
@@ -79,9 +79,9 @@ function yarnInstall() {
     curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version $1
 }
 
-automaticNvm
+doNvm
 
-alias cd=checkForNvmOnCd
+alias cd=cdEnhanced
 alias flush="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;"
 alias github-labels="labels -c $HOME/Developer/github-labels.json -f $1 -t $GITHUB_LABELS_TOKEN"
 alias git=gitEnhanced
