@@ -56,6 +56,11 @@ function gitPullRequestUpstream() {
     git pull --no-rebase --squash ${remote} pull/$1/head
 }
 
+function showall() {
+    defaults write com.apple.finder AppleShowAllFiles $1
+    killall Finder
+}
+
 function whiteboard() {
     # https://gist.github.com/lelandbatey/8677901
     # brew install imagemagick
@@ -91,8 +96,7 @@ alias ls="ls -la"
 alias mkdir="mkdir -p"
 alias pretty=doPrettier
 alias server="python -m SimpleHTTPServer 8000"
-alias showallon="defaults write com.apple.finder AppleShowAllFiles YES"
-alias showalloff="defaults write com.apple.finder AppleShowAllFiles NO"
+alias showall=showall
 alias sourcerc="source ~/.bash_profile && source ~/.zshrc"
 alias usebash="chsh -s /bin/bash"
 alias usezsh="chsh -s /bin/zsh"
