@@ -61,6 +61,12 @@ function killport() {
     kill -9 $port
 }
 
+function whiteboard() {
+    # https://gist.github.com/lelandbatey/8677901
+    # brew install imagemagick
+    command convert "$1" -morphology Convolve DoG:15,100,0 -negate -normalize -blur 0x1 -channel RBG -level 60%,91%,0.1 "$2"
+}
+
 function yarnInstall() {
     echo "Uninstalling yarn..."
     rm -f /usr/local/bin/yarnpkg
@@ -99,6 +105,7 @@ alias showalloff="defaults write com.apple.finder AppleShowAllFiles NO"
 alias sourcerc="source ~/.bash_profile && source ~/.zshrc"
 alias usebash="chsh -s /bin/bash"
 alias usezsh="chsh -s /bin/zsh"
+alias whiteboard=whiteboard
 alias yarni=yarnInstall
 alias yarnr="rm -rf node_modules && yarn"
 alias yarnu="yarn upgrade-interactive --latest"
