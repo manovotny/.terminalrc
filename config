@@ -21,6 +21,10 @@ function checkForNvmOnCd() {
     automaticNvm
 }
 
+function doPrettier() {
+    prettier --write "**/*.{js,json,md}"
+}
+
 function gitEnhanced() {
     if [[ $@ == "remote" ]]; then
         command git remote -v
@@ -88,6 +92,7 @@ alias mkdir="mkdir -p"
 alias npmc="npm-check --no-emoji"
 alias npmr="rm -rf node_modules && npm i"
 alias npms="rm -rf npm-shrinkwrap.json && npmr && npm test && npm shrinkwrap --dev"
+alias pretty=doPrettier
 alias server="python -m SimpleHTTPServer 8000"
 alias showallon="defaults write com.apple.finder AppleShowAllFiles YES"
 alias showalloff="defaults write com.apple.finder AppleShowAllFiles NO"
