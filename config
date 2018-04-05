@@ -69,7 +69,11 @@ function yarnInstall() {
     rm -f /usr/local/bin/yarn
 
     echo "Removing yarn cache..."
-    rm -rf ${HOME}/.yarn
+    if [ -z ${YARN_CACHE_FOLDER+x} ]; then
+        rm -rf ${YARN_CACHE_FOLDER}
+    else
+        rm -rf ${HOME}/.yarn
+    fi
 
     echo "Installing yarn..."
     curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version $1
