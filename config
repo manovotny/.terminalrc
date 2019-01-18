@@ -52,6 +52,11 @@ function gitPullRequestUpstream() {
     git pull --no-rebase --squash ${remote} pull/$1/head
 }
 
+function killport() {
+    port=$(lsof -n -i4TCP:$1 | grep LISTEN | awk '{ print $2 }')
+    kill -9 $port
+}
+
 function showall() {
     defaults write com.apple.finder AppleShowAllFiles $1
     killall Finder
@@ -93,6 +98,7 @@ alias gitrb="git branch | grep -ve \"master\" | xargs git branch -D"
 alias gitu=gitUpstream
 alias headers="curl -I -s -X GET"
 alias j="jekyll serve --watch"
+alias killport=killport
 alias ls="ls -la"
 alias mkdir="mkdir -p"
 alias server="python -m SimpleHTTPServer 8000"
