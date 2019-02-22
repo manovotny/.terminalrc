@@ -11,10 +11,10 @@ export NVM_DIR="$HOME/.nvm"
 
 function cdEnhanced() {
     cd $1
-    doNvm
+    useNvmrc
 }
 
-function doNvm() {
+function useNvmrc() {
     if [ -f .nvmrc ]; then
         nvm use;
     fi
@@ -75,7 +75,7 @@ function yarnVersion() {
     curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version $1
 }
 
-doNvm
+useNvmrc
 
 alias cd=cdEnhanced
 alias flush="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;"
