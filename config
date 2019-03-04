@@ -97,6 +97,6 @@ alias sourcerc="source ~/.bash_profile && source ~/.zshrc"
 alias usebash="chsh -s /bin/bash"
 alias usezsh="chsh -s /bin/zsh"
 alias whiteboard=whiteboard
-alias yarnr="rm -rf node_modules && yarn"
+alias yarnr="find . -type d -name node_modules -prune -exec rm -rf {} \; && yarn"
 alias yarnu="yarn upgrade-interactive --latest"
 alias yarnv=yarnVersion
