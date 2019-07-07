@@ -9,15 +9,22 @@ export PATH=$PATH:/Applications/Genymotion.app/Contents/MacOS/tools
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
-function cdEnhanced() {
-    cd $1
-    useNvmrc
-}
-
 function useNvmrc() {
     if [ -f .nvmrc ]; then
         nvm use;
     fi
+}
+
+function disableSpotlightIndexingOfNodeModulesFolder() {
+    if [[ (-d node_modules && ! -f node_modules/.metadata_never_index) ]]; then
+        touch node_modules/.metadata_never_index;
+    fi
+}
+
+function cdEnhanced() {
+    cd $1
+    useNvmrc
+    disableSpotlightIndexingOfNodeModulesFolder
 }
 
 function gitUpstream() {
@@ -59,6 +66,12 @@ function whiteboard() {
     command convert "$1" -morphology Convolve DoG:15,100,0 -negate -normalize -blur 0x1 -channel RBG -level 60%,91%,0.1 "$2"
 }
 
+function yarnReset() {
+    find . -type d -name node_modules -prune -exec rm -rf {} \;
+    yarn
+    disableSpotlightIndexingOfNodeModulesFolder
+}
+
 function yarnVersion() {
     echo "Uninstalling yarn..."
     rm -f /usr/local/bin/yarnpkg
@@ -97,6 +110,6 @@ alias sourcerc="source ~/.bash_profile && source ~/.zshrc"
 alias usebash="chsh -s /bin/bash"
 alias usezsh="chsh -s /bin/zsh"
 alias whiteboard=whiteboard
-alias yarnr="find . -type d -name node_modules -prune -exec rm -rf {} \; && yarn"
+alias yarnr=yarnReset
 alias yarnu="yarn upgrade-interactive --latest"
 alias yarnv=yarnVersion
