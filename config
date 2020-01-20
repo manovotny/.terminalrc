@@ -93,7 +93,7 @@ useNvmrc
 alias cd=cdEnhanced
 alias flush="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;"
 alias github-labels="labels -c $HOME/Developer/github-labels.json -f $1 -t $GITHUB_LABELS_TOKEN"
-alias gitp="git push origin head"
+alias gitp="git push -u origin head"
 alias gitpr=gitPullRequest
 alias gitpru=gitPullRequestUpstream
 alias gitr="git reset --hard HEAD && git clean -xfd"
