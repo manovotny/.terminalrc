@@ -36,20 +36,6 @@ function gitUpstream() {
     git checkout "${CURRENT_BRANCH}"
 }
 
-function gitPullRequest() {
-    local remote=${2:-origin}
-    git fetch ${remote} +refs/pull/$1/head:refs/remotes/${remote}/pr/$1
-    git pull --no-rebase --squash ${remote} pull/$1/head
-}
-
-function gitPullRequestUpstream() {
-    git reset --hard
-    gitUpstream
-    local remote=${2:-upstream}
-    git fetch ${remote} +refs/pull/$1/head:refs/remotes/${remote}/pr/$1
-    git pull --no-rebase --squash ${remote} pull/$1/head
-}
-
 function killport() {
     port=$(lsof -n -i4TCP:$1 | grep LISTEN | awk '{ print $2 }')
     kill -9 $port
@@ -58,12 +44,6 @@ function killport() {
 function showall() {
     defaults write com.apple.finder AppleShowAllFiles $1
     killall Finder
-}
-
-function whiteboard() {
-    # https://gist.github.com/lelandbatey/8677901
-    # brew install imagemagick
-    command convert "$1" -morphology Convolve DoG:15,100,0 -negate -normalize -blur 0x1 -channel RBG -level 60%,91%,0.1 "$2"
 }
 
 function yarnReset() {
@@ -92,15 +72,11 @@ useNvmrc
 
 alias cd=cdEnhanced
 alias flush="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;"
-alias github-labels="labels -c $HOME/Developer/github-labels.json -f $1 -t $GITHUB_LABELS_TOKEN"
 alias gitp="git push -u origin head"
-alias gitpr=gitPullRequest
-alias gitpru=gitPullRequestUpstream
 alias gitr="git reset --hard HEAD && git clean -xfd"
 alias gitrb="git branch | grep -ve \"master\" | xargs git branch -D"
 alias gitu=gitUpstream
 alias headers="curl -I -s -X GET"
-alias j="jekyll serve --watch"
 alias killport=killport
 alias ls="ls -la"
 alias mkdir="mkdir -p"
@@ -109,7 +85,6 @@ alias showall=showall
 alias sourcerc="source ~/.bash_profile && source ~/.zshrc"
 alias usebash="chsh -s /bin/bash"
 alias usezsh="chsh -s /bin/zsh"
-alias whiteboard=whiteboard
 alias yarnr=yarnReset
 alias yarnu="yarn upgrade-interactive --latest"
 alias yarnv=yarnVersion
