@@ -30,6 +30,11 @@ function cdEnhanced() {
     useYvmrc
 }
 
+function gitDeleteBranch() {
+    git branch -d $1
+    git push origin --delete $1
+}
+
 function gitUpstream() {
     CURRENT_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
     git checkout master
@@ -76,7 +81,8 @@ alias cd=cdEnhanced
 alias flush="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;"
 alias gitp="git push -u origin head"
 alias gitr="git reset --hard HEAD && git clean -xfd"
-alias gitrb="git branch | grep -ve \"master\" | xargs git branch -D"
+alias gitcb="git branch | grep -ve \"main\" | xargs git branch -D"
+alias gitdb=gitDeleteBranch
 alias gitu=gitUpstream
 alias headers="curl -I -s -X GET"
 alias killport=killport
