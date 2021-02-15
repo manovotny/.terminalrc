@@ -35,6 +35,11 @@ function gitDeleteBranch() {
     git push origin --delete $1
 }
 
+function gitSetUpstream() {
+    CURRENT_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+    git push --set-upstream $1 "${CURRENT_BRANCH}"
+}
+
 function gitUpdateUpstream() {
     CURRENT_BRANCH="$(git rev-parse --abbrev-ref HEAD)"
     git checkout $1
@@ -83,6 +88,7 @@ alias gitp="git push -u origin head"
 alias gitr="git reset --hard HEAD && git clean -xfd"
 alias gitcb="git branch | grep -ve \"main\" | xargs git branch -D"
 alias gitdb=gitDeleteBranch
+alias gitsu=gitSetUpstream
 alias gituu=gitUpdateUpstream
 alias headers="curl -I -s -X GET"
 alias killport=killport
