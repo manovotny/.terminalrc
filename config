@@ -4,13 +4,14 @@ export YARN_CACHE_FOLDER=$HOME/Developer/.yarn-cache
 export PATH=$PATH:$HOME/.yarn/bin
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/opt/bin
-export PATH=$PATH:/Applications/Genymotion.app/Contents/MacOS/tools
+export PATH=$PATH:/opt/homebrew/bin
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 export YVM_DIR="$HOME/.yvm"
-[ -r "$YVM_DIR/yvm.sh" ] && . "$YVM_DIR/yvm.sh"
+[ -r $YVM_DIR/yvm.sh ] && . $YVM_DIR/yvm.sh
 
 function useNvmrc() {
     if [ -f .nvmrc ]; then
@@ -81,6 +82,7 @@ function yarnVersion() {
 }
 
 useNvmrc
+useYvmrc
 
 alias cd=cdEnhanced
 alias flush="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;"
