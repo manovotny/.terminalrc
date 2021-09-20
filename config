@@ -60,6 +60,16 @@ function showall() {
     killall Finder
 }
 
+function sourceRcFiles() {
+    if [ -f ~/.bash_profile ]; then
+        source ~/.bash_profile
+    fi
+
+    if [ -f ~/.bash_profile ]; then
+        source ~/.zshrc
+    fi
+}
+
 function yarnReset() {
     find . -type d -name node_modules -prune -exec rm -rf {} \;
     yarn
@@ -99,7 +109,7 @@ alias ls="ls -la"
 alias mkdir="mkdir -p"
 alias server="python -m SimpleHTTPServer 8000"
 alias showall=showall
-alias sourcerc="source ~/.bash_profile && source ~/.zshrc"
+alias sourcerc=sourceRcFiles
 alias usebash="chsh -s /bin/bash"
 alias usezsh="chsh -s /bin/zsh"
 alias yarnr=yarnReset
