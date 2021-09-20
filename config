@@ -86,6 +86,7 @@ useYvmrc
 
 alias cd=cdEnhanced
 alias flush="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;"
+alias gitbump="git commit --allow-empty -m \"Bump.\" && gitp"
 alias gitdb=gitDeleteBranch
 alias gitp="git push -u origin head"
 alias gitr="git reset --hard HEAD && git clean -xfd"
