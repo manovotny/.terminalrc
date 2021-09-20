@@ -55,6 +55,15 @@ function killport() {
     kill -9 $port
 }
 
+function npmReset() {
+    removeNodeModules
+    npm i
+}
+
+function removeNodeModules() {
+    find . -type d -name node_modules -prune -exec rm -rf {} \;
+}
+
 function showall() {
     defaults write com.apple.finder AppleShowAllFiles $1
     killall Finder
@@ -71,7 +80,7 @@ function sourceRcFiles() {
 }
 
 function yarnReset() {
-    find . -type d -name node_modules -prune -exec rm -rf {} \;
+    removeNodeModules
     yarn
 }
 
@@ -107,6 +116,7 @@ alias headers="curl -I -s -X GET"
 alias killport=killport
 alias ls="ls -la"
 alias mkdir="mkdir -p"
+alias npmr=npmReset
 alias server="python -m SimpleHTTPServer 8000"
 alias showall=showall
 alias sourcerc=sourceRcFiles
