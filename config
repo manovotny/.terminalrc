@@ -86,10 +86,10 @@ useYvmrc
 
 alias cd=cdEnhanced
 alias flush="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;"
+alias gitdb=gitDeleteBranch
 alias gitp="git push -u origin head"
 alias gitr="git reset --hard HEAD && git clean -xfd"
-alias gitcb="git branch | grep -ve \"main\" | xargs git branch -D"
-alias gitdb=gitDeleteBranch
+alias gitrb="git branch | grep -ve \"main\" | xargs git branch -D"
 alias gitsu=gitSetUpstream
 alias gituu=gitUpdateUpstream
 alias headers="curl -I -s -X GET"
