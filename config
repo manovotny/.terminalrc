@@ -31,6 +31,10 @@ function cdEnhanced() {
     useYvmrc
 }
 
+function codeEnhanced() {
+    code-insiders $1
+}
+
 function gitDeleteBranch() {
     git branch -d $1
     git push origin --delete $1
@@ -104,6 +108,7 @@ useNvmrc
 useYvmrc
 
 alias cd=cdEnhanced
+alias code=codeEnhanced
 alias flush="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;"
 alias gitbump="git commit --allow-empty -m \"Bump.\" && gitp"
 alias gitdb=gitDeleteBranch
