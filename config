@@ -104,6 +104,10 @@ function yarnVersion() {
     curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version $1
 }
 
+function zipWithPassword() {
+    zip -er $1.zip $1
+}
+
 useNvmrc
 useYvmrc
 
@@ -130,3 +134,4 @@ alias usezsh="chsh -s /bin/zsh"
 alias yarnr=yarnReset
 alias yarnu="yarn upgrade-interactive --latest"
 alias yarnv=yarnVersion
+alias zipp=zipWithPassword
