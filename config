@@ -35,6 +35,10 @@ function codeEnhanced() {
     code-insiders $1
 }
 
+function findport() {
+    lsof -i -P -n | grep :$1
+}
+
 function gitDeleteBranch() {
     git branch -d $1
     git push origin --delete $1
