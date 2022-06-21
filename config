@@ -68,6 +68,11 @@ function npmReset() {
     npm i
 }
 
+function pnpmReset() {
+    removeNodeModules
+    pnpm install
+}
+
 function removeNodeModules() {
     find . -type d -name node_modules -prune -exec rm -rf {} \;
 }
@@ -130,6 +135,7 @@ alias killport=killport
 alias ls="ls -la"
 alias mkdir="mkdir -p"
 alias npmr=npmReset
+alias pnpmr=pnpmReset
 alias server="python -m SimpleHTTPServer 8000"
 alias showall=showall
 alias sourcerc=sourceRcFiles
